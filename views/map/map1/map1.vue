@@ -195,9 +195,9 @@ import axios from 'axios';
                                                         //创建
                                                         window["pt"+i] = new BMap.Point(k[i].longitude, k[i].latitude);
                                                         if(k[i].type == "公厕"){ 
-                                                            var myIcon = new BMap.Icon("http://dooodesign.com/dist/src/images/wc.png", new BMap.Size(26,26));
+                                                            var myIcon = new BMap.Icon("http://dooodesign.com/dist/src/images/wc.png", new BMap.Size(32,32));
                                                         }else{
-                                                            var myIcon = new BMap.Icon("http://dooodesign.com/dist/src/images/ysz.png", new BMap.Size(26,26));
+                                                            var myIcon = new BMap.Icon("http://dooodesign.com/dist/src/images/ysz.png", new BMap.Size(32,32));
                                                         }
                                                     
                                                         window["mk"+i]  = new BMap.Marker(window["pt"+i],{icon:myIcon});  // 创建标注
@@ -373,9 +373,9 @@ xz_b();
                                                                 //创建
                                                                 window["ptb"+b] = new BMap.Point(kb[b].longitude, kb[b].latitude);
                                                                 if(kb[b].type == "公厕"){ 
-                                                                    var myIcon = new BMap.Icon("http://dooodesign.com/dist/src/images/wc.png", new BMap.Size(26,26));
+                                                                    var myIcon = new BMap.Icon("http://dooodesign.com/dist/src/images/wc.png", new BMap.Size(32,32));
                                                                 }else{
-                                                                    var myIcon = new BMap.Icon("http://dooodesign.com/dist/src/images/ysz.png", new BMap.Size(26,26));
+                                                                    var myIcon = new BMap.Icon("http://dooodesign.com/dist/src/images/ysz.png", new BMap.Size(32,32));
                                                                 }
                                                             
                                                                 window["mkb"+b]  = new BMap.Marker(window["ptb"+b],{icon:myIcon});  // 创建标注
@@ -555,9 +555,9 @@ xz_b();
                                                                 //创建
                                                                 window["ptb"+b] = new BMap.Point(kb[b].longitude, kb[b].latitude);
                                                                 if(kb[b].type == "公厕"){ 
-                                                                    var myIcon = new BMap.Icon("http://dooodesign.com/dist/src/images/wc.png", new BMap.Size(26,26));
+                                                                    var myIcon = new BMap.Icon("http://dooodesign.com/dist/src/images/wc.png", new BMap.Size(32,32));
                                                                 }else{
-                                                                    var myIcon = new BMap.Icon("http://dooodesign.com/dist/src/images/ysz.png", new BMap.Size(26,26));
+                                                                    var myIcon = new BMap.Icon("http://dooodesign.com/dist/src/images/ysz.png", new BMap.Size(32,32));
                                                                 }
                                                             
                                                                 window["mkb"+b]  = new BMap.Marker(window["ptb"+b],{icon:myIcon});  // 创建标注
@@ -650,9 +650,9 @@ axios.get('http://xhj.icecn.net/xhjapi/listStaff').then((res) => {
                                                                 //创建
                                                                 window["ptb"+b] = new BMap.Point(kb[b].longitude, kb[b].latitude);
                                                                 if(kb[b].type == "公厕"){ 
-                                                                    var myIcon = new BMap.Icon("http://dooodesign.com/dist/src/images/wc.png", new BMap.Size(26,26));
+                                                                    var myIcon = new BMap.Icon("http://dooodesign.com/dist/src/images/wc.png", new BMap.Size(32,32));
                                                                 }else{
-                                                                    var myIcon = new BMap.Icon("http://dooodesign.com/dist/src/images/ysz.png", new BMap.Size(26,26));
+                                                                    var myIcon = new BMap.Icon("http://dooodesign.com/dist/src/images/ysz.png", new BMap.Size(32,32));
                                                                 }
                                                             
                                                                 window["mkb"+b]  = new BMap.Marker(window["ptb"+b],{icon:myIcon});  // 创建标注
@@ -773,9 +773,9 @@ axios.get('http://xhj.icecn.net/xhjapi/listStaff').then((res) => {
                                                                 //创建
                                                                 window["ptb"+b] = new BMap.Point(kb[b].longitude, kb[b].latitude);
                                                                 if(kb[b].type == "公厕"){ 
-                                                                    var myIcon = new BMap.Icon("http://dooodesign.com/dist/src/images/wc.png", new BMap.Size(26,26));
+                                                                    var myIcon = new BMap.Icon("http://dooodesign.com/dist/src/images/wc.png", new BMap.Size(32,32));
                                                                 }else{
-                                                                    var myIcon = new BMap.Icon("http://dooodesign.com/dist/src/images/ysz.png", new BMap.Size(26,26));
+                                                                    var myIcon = new BMap.Icon("http://dooodesign.com/dist/src/images/ysz.png", new BMap.Size(32,32));
                                                                 }
                                                             
                                                                 window["mkb"+b]  = new BMap.Marker(window["ptb"+b],{icon:myIcon});  // 创建标注
@@ -951,9 +951,9 @@ axios.get('http://xhj.icecn.net/xhjapi/listStaff').then((res) => {
                                                         //创建
                                                         window["ptb"+b] = new BMap.Point(kb[b].longitude, kb[b].latitude);
                                                         if(kb[b].type == "公厕"){ 
-                                                            var myIcon = new BMap.Icon("http://dooodesign.com/dist/src/images/wc.png", new BMap.Size(26,26));
+                                                            var myIcon = new BMap.Icon("http://dooodesign.com/dist/src/images/wc.png", new BMap.Size(32,32));
                                                         }else{
-                                                            var myIcon = new BMap.Icon("http://dooodesign.com/dist/src/images/ysz.png", new BMap.Size(26,26));
+                                                            var myIcon = new BMap.Icon("http://dooodesign.com/dist/src/images/ysz.png", new BMap.Size(32,32));
                                                         }
                                                     
                                                         window["mkb"+b]  = new BMap.Marker(window["ptb"+b],{icon:myIcon});  // 创建标注
