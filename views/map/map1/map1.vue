@@ -203,7 +203,7 @@ import axios from 'axios';
                                                         window["mk"+i]  = new BMap.Marker(window["pt"+i],{icon:myIcon});  // 创建标注
                                                         map.addOverlay(window["mk"+i]);              // 将标注添加到地图中
 
-                                                        window["iw"+i]= new BMap.InfoWindow("地址：" + k[i].address + "<br/>编号：" + k[i].id + "<br/>管理者姓名：" + k[i].person + "<br/>管理者电话："+ k[i].phone, opts);  // 创建信息窗口对象 
+                                                        window["iwb"+b]= new BMap.InfoWindow("地址：" + kb[b].address + "<br/>编号：" + kb[b].id +"<br/>名称：" + kb[b].name_code + "<br/>管理者姓名：" + kb[b].person + "<br/>管理者电话："+ kb[b].phone, opts);  // 创建信息窗口对象  
 
                                                         
                                                         window["mk"+i].addEventListener('click', function() {
@@ -342,59 +342,62 @@ xz_b();
    
                 
                 }else if(val == "公共厕所/垃圾压缩站"){
-xz_c();
-                    // this.$nextTick(function () {
+// xz_c();
+                    this.$nextTick(function () {
 
-                    //                     MP("qCRNVGumLaK3e4wyTi6za5UhX99KhjiO").then( BMap => {
+                                        MP("qCRNVGumLaK3e4wyTi6za5UhX99KhjiO").then( BMap => {
 
-                    //                         // 百度地图API功能
-                    //                         var map = new BMap.Map("allmap");
-                    //                         var point = new BMap.Point(121.364093, 31.251892);
-                    //                         map.centerAndZoom(point, 16);
+                                            // 百度地图API功能
+                                            var map = new BMap.Map("allmap");
+                                            var point = new BMap.Point(121.364093, 31.251892);
+                                            map.centerAndZoom(point, 16);
 
-                    //                         // 添加地图类型控件
-                    //                         map.addControl(new BMap.MapTypeControl());  
-                    //                         // 设置地图显示的城市 此项是必须设置的
-                    //                         map.setCurrentCity("上海");    
-                    //                         // 开启鼠标滚轮缩放      
-                    //                         map.enableScrollWheelZoom(true);
+                                            // 添加地图类型控件
+                                            map.addControl(new BMap.MapTypeControl());  
+                                            // 设置地图显示的城市 此项是必须设置的
+                                            map.setCurrentCity("上海");    
+                                            // 开启鼠标滚轮缩放      
+                                            map.enableScrollWheelZoom(true);
                                             
-                    //                         var opts = {
-                    //                             width : 240,     // 信息窗口宽度
-                    //                             height: 120,     // 信息窗口高度
-                    //                         }
+                                            var opts = {
+                                                width : 240,     // 信息窗口宽度
+                                                height: 120,     // 信息窗口高度
+                                            }
 
-                    //                          axios.get('http://xhj.icecn.net/xhjapi/listWc').then((res1) => {
-                    //                             var k=res1.data.list;
-                    //                             for(let i=0;i<k.length;i++){
-                    //                                 if(k[i].latitude){
-                    //                                     //创建
-                    //                                     window["pt"+i] = new BMap.Point(k[i].longitude, k[i].latitude);
-                    //                                     if(k[i].type == "公厕"){ 
-                    //                                         var myIcon = new BMap.Icon("http://dooodesign.com/dist/src/images/wc.png", new BMap.Size(26,26));
-                    //                                     }else{
-                    //                                         var myIcon = new BMap.Icon("http://dooodesign.com/dist/src/images/ysz.png", new BMap.Size(26,26));
-                    //                                     }
-                                                    
-                    //                                     window["mk"+i]  = new BMap.Marker(window["pt"+i],{icon:myIcon});  // 创建标注
-                    //                                     map.addOverlay(window["mk"+i]);              // 将标注添加到地图中
+                                              axios.get('http://xhj.icecn.net/xhjapi/listWc').then((res2) => {
 
-                    //                                     window["iw"+i]= new BMap.InfoWindow("地址：" + k[i].address + "<br/>编号：" + k[i].id + "<br/>管理者姓名：" + k[i].person + "<br/>管理者电话："+ k[i].phone, opts);  // 创建信息窗口对象 
 
-                                                        
-                    //                                     window["mk"+i].addEventListener('click', function() {
-                    //                                             console.log(i+'点击了预设覆盖物3'+window["pt"+i]);
-                    //                                             map.openInfoWindow(window["iw"+i],window["pt"+i])
-                    //                                         })
-                                                        
-                    //                                 }
+                                            var kb=res2.data.list;
+                                                        for(let b=0;b<kb.length;b++){
+                                                            if(kb[b].latitude){
+                                                                //创建
+                                                                window["ptb"+b] = new BMap.Point(kb[b].longitude, kb[b].latitude);
+                                                                if(kb[b].type == "公厕"){ 
+                                                                    var myIcon = new BMap.Icon("http://dooodesign.com/dist/src/images/wc.png", new BMap.Size(26,26));
+                                                                }else{
+                                                                    var myIcon = new BMap.Icon("http://dooodesign.com/dist/src/images/ysz.png", new BMap.Size(26,26));
+                                                                }
                                                             
-                    //                             }      
-                    //                         })
+                                                                window["mkb"+b]  = new BMap.Marker(window["ptb"+b],{icon:myIcon});  // 创建标注
+                                                                map.addOverlay(window["mkb"+b]);              // 将标注添加到地图中
 
-                    //                         })
+                                                                window["iwb"+b]= new BMap.InfoWindow("地址：" + kb[b].address + "<br/>编号：" + kb[b].id +"<br/>名称：" + kb[b].name_code + "<br/>管理者姓名：" + kb[b].person + "<br/>管理者电话："+ kb[b].phone, opts);  // 创建信息窗口对象  
 
-                    //     });  环卫工','垃圾桶','公共厕所/垃圾压缩站
+                                                                
+                                                                window["mkb"+b].addEventListener('click', function() {
+                                                                        console.log(b+'点击了预设覆盖物3'+window["ptb"+b]);
+                                                                        map.openInfoWindow(window["iwb"+b],window["ptb"+b])
+                                                                    })
+                                                                
+                                                            }
+                                                                    
+                                                        }   
+                                                        
+                                                    })
+
+                                            })
+
+                        });
                     
                 }
                 else if(val == "环卫工,垃圾桶" || val == "垃圾桶,环卫工"){
@@ -560,7 +563,7 @@ xz_c();
                                                                 window["mkb"+b]  = new BMap.Marker(window["ptb"+b],{icon:myIcon});  // 创建标注
                                                                 map.addOverlay(window["mkb"+b]);              // 将标注添加到地图中
 
-                                                                window["iwb"+b]= new BMap.InfoWindow("地址：" + kb[b].address + "<br/>编号：" + kb[b].name_code + "<br/>管理者姓名：" + kb[b].person + "<br/>管理者电话："+ kb[b].phone, opts);  // 创建信息窗口对象 
+                                                                window["iwb"+b]= new BMap.InfoWindow("地址：" + kb[b].address + "<br/>编号：" + kb[b].id +"<br/>名称：" + kb[b].name_code + "<br/>管理者姓名：" + kb[b].person + "<br/>管理者电话："+ kb[b].phone, opts);  // 创建信息窗口对象  
 
                                                                 
                                                                 window["mkb"+b].addEventListener('click', function() {
@@ -655,7 +658,7 @@ axios.get('http://xhj.icecn.net/xhjapi/listStaff').then((res) => {
                                                                 window["mkb"+b]  = new BMap.Marker(window["ptb"+b],{icon:myIcon});  // 创建标注
                                                                 map.addOverlay(window["mkb"+b]);              // 将标注添加到地图中
 
-                                                                window["iwb"+b]= new BMap.InfoWindow("地址：" + kb[b].address + "<br/>编号：" + kb[b].name_code + "<br/>管理者姓名：" + kb[b].person + "<br/>管理者电话："+ kb[b].phone, opts);  // 创建信息窗口对象 
+                                                                window["iwb"+b]= new BMap.InfoWindow("地址：" + kb[b].address + "<br/>编号：" + kb[b].id +"<br/>名称：" + kb[b].name_code + "<br/>管理者姓名：" + kb[b].person + "<br/>管理者电话："+ kb[b].phone, opts);  // 创建信息窗口对象 
 
                                                                 
                                                                 window["mkb"+b].addEventListener('click', function() {
@@ -778,7 +781,7 @@ axios.get('http://xhj.icecn.net/xhjapi/listStaff').then((res) => {
                                                                 window["mkb"+b]  = new BMap.Marker(window["ptb"+b],{icon:myIcon});  // 创建标注
                                                                 map.addOverlay(window["mkb"+b]);              // 将标注添加到地图中
 
-                                                                window["iwb"+b]= new BMap.InfoWindow("地址：" + kb[b].address + "<br/>编号：" + kb[b].name_code + "<br/>管理者姓名：" + kb[b].person + "<br/>管理者电话："+ kb[b].phone, opts);  // 创建信息窗口对象 
+                                                                window["iwb"+b]= new BMap.InfoWindow("地址：" + kb[b].address + "<br/>编号：" + kb[b].id +"<br/>名称：" + kb[b].name_code + "<br/>管理者姓名：" + kb[b].person + "<br/>管理者电话："+ kb[b].phone, opts);  // 创建信息窗口对象 
 
                                                                 
                                                                 window["mkb"+b].addEventListener('click', function() {
@@ -956,7 +959,7 @@ axios.get('http://xhj.icecn.net/xhjapi/listStaff').then((res) => {
                                                         window["mkb"+b]  = new BMap.Marker(window["ptb"+b],{icon:myIcon});  // 创建标注
                                                         map.addOverlay(window["mkb"+b]);              // 将标注添加到地图中
 
-                                                        window["iwb"+b]= new BMap.InfoWindow("地址：" + kb[b].address + "<br/>编号：" + kb[b].name_code + "<br/>管理者姓名：" + kb[b].person + "<br/>管理者电话："+ kb[b].phone, opts);  // 创建信息窗口对象 
+                                                        window["iwb"+b]= new BMap.InfoWindow("地址：" + kb[b].address + "<br/>编号：" + kb[b].id +"<br/>名称：" + kb[b].name_code + "<br/>管理者姓名：" + kb[b].person + "<br/>管理者电话："+ kb[b].phone, opts);  // 创建信息窗口对象 
 
                                                         
                                                         window["mkb"+b].addEventListener('click', function() {
