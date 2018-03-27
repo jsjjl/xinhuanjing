@@ -8,6 +8,19 @@
     transform: translate(-50%,-50%);
     transition: all 3s;
 }
+
+
+.fixed:after { content: "."; display: block; clear: both; height: 0; visibility: hidden; }
+.fixed { display: block; min-height: 1%; }
+.clear { display: block!important; float: none!important; clear: both; overflow: hidden; width: auto!important; height: 0!important; margin: 0 auto!important; padding: 0!important; font-size: 0; line-height: 0; }
+/*基于display:table-cell的自适应布局*/
+.cell{display:table-cell; display:inline-block; width:2000px; width:auto;}
+/*双栏自适应cell部分连续英文字符换行*/
+.cell_bk{display:table; width:100%; table-layout:fixed; word-wrap:break-word;}
+/*单行文字溢出虚点显示*/
+.ell{text-overflow:ellipsis; white-space:nowrap; overflow:hidden;}
+
+
 .main .tags-con .tags-outer-scroll-con .tags-inner-scroll-body span div:first-child{ display: none;}
 .main{
     position: absolute;

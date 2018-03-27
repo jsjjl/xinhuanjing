@@ -1,45 +1,75 @@
 export const table1Columns = [{
-        title: '编号',
-        type: 'index',
-        width: 80,
-        align: 'center'
-    },
-    {
-        title: '时间',
-        align: 'center',
-        key: 'sj',
-        editable: true
-    },
-    {
-        title: '地点',
-        align: 'center',
-        key: 'account',
-        editable: true
-    },
-    {
-        title: '投诉来源',
-        align: 'center',
-        key: 'address',
-        editable: true
-    },
-    {
-        title: '负责单位',
-        align: 'center',
-        key: 'content'
-    },
-    {
-        title: '时限',
-        align: 'center',
-        key: 'deal',
-        editable: true
-    },
-    {
-        title: '详情',
-        align: 'center',
-        key: 'type',
-        editable: true
-    }
+    title: '序号',
+    type: 'index',
+    width: 80,
+    align: 'center'
+},
+{
+    title: '姓名',
+    align: 'center',
+    key: 'account',
+    editable: true
+},
+{
+    title: '手机号',
+    align: 'center',
+    key: 'login_name',
+    editable: true
+},
+{
+    title: '职位',
+    align: 'center',
+    key: 'login_type'
+},
+{
+    title: '身高',
+    align: 'center',
+    key: 'height',
+    editable: true
+},
+{
+    title: '体重',
+    align: 'center',
+    key: 'weight',
+    editable: true
+},
+{
+    title: '蓝牙名称',
+    align: 'center',
+    key: 'blue_name',
+    editable: true
+},
+{
+    title: '蓝牙地址',
+    align: 'center',
+    key: 'blue_address',
+    editable: true
+},
+{
+    title: '性别',
+    align: 'center',
+    key: 'sex',
+    editable: true
+},
+{
+    title: '负责路段',
+    align: 'center',
+    key: 'my_area',
+    editable: true
+},
+
+{
+    title: '操作',
+    align: 'center',
+    width: 190,
+    key: 'userid',
+    handle: ['edit', 'delete']
+
+}
 ];
+
+
+
 
 
 
@@ -64,8 +94,8 @@ export const table1Columns = [{
 
 
 const tableData = {
-    table1Columns: table1Columns,
-    // table1Data: table1Data,
+table1Columns: table1Columns,
+// table1Data: table1Data,
 
 };
 

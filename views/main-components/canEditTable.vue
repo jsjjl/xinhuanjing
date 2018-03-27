@@ -43,7 +43,7 @@ const editButton = (vm, h, currentRow, index) => {
         }
     }, currentRow.editting ? '保存' : '编辑');
 };
-const deleteButton = (vm, h, currentRow, index) => {
+const deleteButton = (vm, h, currentRow, index,param) => {
     return h('Poptip', {
         props: {
             confirm: true,
