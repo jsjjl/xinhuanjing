@@ -78,6 +78,7 @@ export default {
                             //res 为成功回调的响应
                            console.log(res.data);
                            Cookies.set('user', this.form.userName);
+                           Cookies.set('user_id', res.data.id);
                            Cookies.set('password', this.form.password);
                             this.$store.commit('setAvator', 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3448484253,3685836170&fm=27&gp=0.jpg');
                            if (this.form.userName === 'admin') {

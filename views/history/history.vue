@@ -30,6 +30,7 @@
 <script>
 import canEditTable from '../main-components/canEditTable.vue';
 import tableData from './js/history.js';
+import Cookies from 'js-cookie';
 
 var day1 = new Date();
 day1.setTime(day1.getTime()-24*60*60*1000);
@@ -111,8 +112,9 @@ export default {
                         console.log(json);
                         this.tableData = json;
                 });
-
-                 axios.get('http://xhj.icecn.net/xhjapi/listStaff').then((res) => {
+                var aa =Cookies.get('user_id');
+                console.log("cookies_user_id:",aa);
+                 axios.get('http://xhj.icecn.net/xhjapi/listStaff?session_id='+aa).then((res) => {
 
                     var k=res.data.list;
                     var json = [];

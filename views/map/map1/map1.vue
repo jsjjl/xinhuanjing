@@ -39,11 +39,15 @@
 </style>
 <script>
 import {MP} from '../src/map.js';
+import Cookies from 'js-cookie';
 //引入axios
 var zong = 0;
 var zai = 0;
 import axios from 'axios';
     export default {
+
+         
+                     
         name:'',
         data () {
             return {
@@ -77,7 +81,11 @@ import axios from 'axios';
                                                 height: 120,     // 信息窗口高度
                                             }
 
-                                            axios.get('http://xhj.icecn.net/xhjapi/listStaff').then((res) => {
+                                           
+
+                                                  var aa =Cookies.get('user_id');
+                 console.log("cookies_user_id:",aa);
+                 axios.get('http://xhj.icecn.net/xhjapi/listStaff?session_id='+aa).then((res) => {
                                                 var ka=res.data.list;
                                                  zai = 0;
                                                 for(let a=0;a<ka.length;a++){
@@ -452,7 +460,9 @@ xz_b();
                                 }      
                             });
                         
-                         axios.get('http://xhj.icecn.net/xhjapi/listStaff').then((res) => {
+                       var aa =Cookies.get('user_id');
+                 console.log("cookies_user_id:",aa);
+                 axios.get('http://xhj.icecn.net/xhjapi/listStaff?session_id='+aa).then((res) => {
                                 var ka=res.data.list;
                                 zai = 0;
                                 for(let a=0;a<ka.length;a++){
@@ -608,7 +618,9 @@ xz_b();
                                 width : 240,     // 信息窗口宽度
                                 height: 120,     // 信息窗口高度
                             }
-axios.get('http://xhj.icecn.net/xhjapi/listStaff').then((res) => {
+  var aa =Cookies.get('user_id');
+                 console.log("cookies_user_id:",aa);
+                 axios.get('http://xhj.icecn.net/xhjapi/listStaff?session_id='+aa).then((res) => {
                                 var ka=res.data.list;
                                 zai = 0;
                                 for(let a=0;a<ka.length;a++){
@@ -702,7 +714,9 @@ axios.get('http://xhj.icecn.net/xhjapi/listStaff').then((res) => {
                             }
 
 
-                            axios.get('http://xhj.icecn.net/xhjapi/listStaff').then((res) => {
+                             var aa =Cookies.get('user_id');
+                 console.log("cookies_user_id:",aa);
+                 axios.get('http://xhj.icecn.net/xhjapi/listStaff?session_id='+aa).then((res) => {
                                 var ka=res.data.list;
                                 zai = 0;
                                 for(let a=0;a<ka.length;a++){
@@ -874,7 +888,9 @@ axios.get('http://xhj.icecn.net/xhjapi/listStaff').then((res) => {
                         height: 120,     // 信息窗口高度
                     }
 
-                    axios.get('http://xhj.icecn.net/xhjapi/listStaff').then((res) => {
+               var aa =Cookies.get('user_id');
+                 console.log("cookies_user_id:",aa);
+                 axios.get('http://xhj.icecn.net/xhjapi/listStaff?session_id='+aa).then((res) => {
                         var ka=res.data.list;
                         zai = 0;
                         for(let a=0;a<ka.length;a++){

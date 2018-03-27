@@ -125,7 +125,7 @@ import axios from 'axios';
 
 
 
-                    axios.get('http://xhj.icecn.net/xhjapi/listStaff').then((res) => {
+                    axios.get('http://xhj.icecn.net/xhjapi/listStaff?').then((res) => {
                         var ka=res.data.list;
                         for(let a=0;a<ka.length;a++){
                             if(ka[a].latitude){

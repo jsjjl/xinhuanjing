@@ -22,7 +22,7 @@
 <script>
 import canEditTable from './components/canEditTable.vue';
 import tableData from './components/table_data.js';
-
+import Cookies from 'js-cookie';
 
 //引入axios
 import axios from 'axios';
@@ -66,9 +66,21 @@ export default {
     methods: {
         getData () {
             this.columnsList = tableData.table1Columns;
+function getCookie(name) 
+{ 
+    var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+ 
+    if(arr=document.cookie.match(reg))
+ 
+        return unescape(arr[2]); 
+    else 
+        return null; 
+} 
 
             //this.tableData = [{account:"",step:"数据加载中",heart:""}];
-                axios.get('http://xhj.icecn.net/xhjapi/listStaff').then((res) => {
+                      var aa =Cookies.get('user_id');
+                 console.log("cookies_user_id:",aa);
+                 axios.get('http://xhj.icecn.net/xhjapi/listStaff?session_id='+aa).then((res) => {
 
                     var k=res.data.list;
                     var json = [];

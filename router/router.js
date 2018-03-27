@@ -170,6 +170,16 @@ export const appRouter = [
         children: [
             { path: 'index', title: '投诉与整改', name: 'tousu_index', component: resolve => { require(['@/views/tousu/tousu.vue'], resolve); } }
         ]
+    },
+    {
+        path: '/user-list',
+        icon: 'clipboard',
+        title: '员工信息',
+        name: 'work',
+        component: Main,
+        children: [
+            { path: 'index', title: '员工信息', name: 'user-list', component: resolve => { require(['@/views/user-list/user-list.vue'], resolve); } }
+        ]
     }
 ];
 
