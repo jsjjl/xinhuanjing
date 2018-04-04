@@ -13,10 +13,10 @@
                     <div>
                         <div style="margin:0 0 20px 0; font-size:14px;" class="ditu_top">显示：
                             <CheckboxGroup v-model="fruit" style="display:inline-block;font-size:14px;"  @on-change="checkGroupChange">
-                                <Checkbox label="环卫工"></Checkbox>
-                                <Checkbox label="垃圾桶"></Checkbox>
+                                <Checkbox label="维护人员"></Checkbox>
+                                <Checkbox label="智能井盖"></Checkbox>
                             </CheckboxGroup>&nbsp;&nbsp;&nbsp;&nbsp;
-                            <span>总共人数：</span><em>28人</em>&nbsp;&nbsp;&nbsp;&nbsp;<span>在线人数：<em>0人</em></span>
+                            <span>报警设备：</span><em>28个</em>&nbsp;&nbsp;&nbsp;&nbsp;<span>已处理：<em>5个</em></span>
                         </div>
 
 
@@ -46,7 +46,7 @@ import axios from 'axios';
         name:'',
         data () {
             return {
-                fruit: ['环卫工','垃圾桶'],
+                fruit: ['维护人员','智能井盖'],
                 zong:""
             }
         },
@@ -54,7 +54,7 @@ import axios from 'axios';
 
             checkGroupChange: function (val){
                 
-                if(val == "环卫工"){
+                if(val == "维护人员"){
                     
                     this.$nextTick(function () {
 
@@ -87,7 +87,7 @@ import axios from 'axios';
 
                     })  
 
-                }else if(val == "垃圾桶"){
+                }else if(val == "智能井盖"){
 
                     this.$nextTick(function () {
 

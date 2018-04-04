@@ -12,9 +12,7 @@
                 <Card>
                     <div style="margin:5px 0 20px;text-align: right;"> 
                        
-                     <Select v-model="model1" style="width:150px;text-align: left;">
-                        <Option v-for="item in sx_type" :value="item.value" :key="item.value">{{ item.label }}</Option>
-                     </Select>
+                    
                      <Select v-model="model2" style="width:150px;text-align: left;">
                         <Option v-for="item in sx_deal" :value="item.value" :key="item.value">{{ item.label }}</Option>
                      </Select>
