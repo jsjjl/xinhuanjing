@@ -85,7 +85,7 @@ import axios from 'axios';
 
                                                   var aa =Cookies.get('user_id');
                  console.log("cookies_user_id:",aa);
-                 axios.get('http://xhj.icecn.net/xhjapi/listStaff?company=士明&session_id='+aa).then((res) => {
+                 axios.get('http://xhj.icecn.net/xhjapi/listStaff?company=0&session_id='+aa).then((res) => {
                                                 var ka=res.data.list;
                                                  zai = 0;
                                                 for(let a=0;a<ka.length;a++){
@@ -96,13 +96,23 @@ import axios from 'axios';
                                                         if(ka[a].alarm == 1){ 
                                                             var myIcon = new BMap.Icon("http://dooodesign.com/dist/src/images/ryyc.png", new BMap.Size(28,32));
                                                         }else{
-                                                            var myIcon = new BMap.Icon("http://dooodesign.com/dist/src/images/ryzcSM.png", new BMap.Size(38,38));
+                                                             if(ka[a].company == "士明"){
+                                                var myIcon = new BMap.Icon("http://dooodesign.com/dist/src/images/ryzcSM.png", new BMap.Size(38,38));
+                                            }else if(ka[a].company == "馨靓"){
+                                                var myIcon = new BMap.Icon("http://dooodesign.com/dist/src/images/ryzcXL.png", new BMap.Size(38,38));
+                                            }else if(ka[a].company == "守利"){
+                                                var myIcon = new BMap.Icon("http://dooodesign.com/dist/src/images/ryzcSL.png", new BMap.Size(38,38));
+                                            }else if(ka[a].company == "冉然"){
+                                                var myIcon = new BMap.Icon("http://dooodesign.com/dist/src/images/ryzcRR.png", new BMap.Size(38,38));
+                                            }else{
+                                                var myIcon = new BMap.Icon("http://dooodesign.com/dist/src/images/ryzcYY.png", new BMap.Size(38,38));
+                                            }
                                                         }
                                                     
                                                         window["mka"+a] = new BMap.Marker(window["pta"+a],{icon:myIcon});  // 创建标注
                                                         map.addOverlay(window["mka"+a]);              // 将标注添加到地图中
                                                         console.log(ka[a].picture)
-                                                        window["iwa"+a] = new BMap.InfoWindow("<img src='" + ka[a].picture + "' style='width:35px;height:35px;border-radius:35px;margin-top:0px; margin-right:10px;'><span style='margin-top: -42px;display: block;margin-left: 45px;'><em style='color:#9b9b9b;font-style: normal;'>姓名：</em>" + ka[a].account + "</span><br/><span style='margin-top: -22px;display: block;margin-left: 45px;'><em style='color:#9b9b9b;font-style: normal;'>电话：</em>"+ ka[a].phone+ "</span><br/><span style='margin-top: -20px;display: block;margin-left: 0px;'><em style='color:#9b9b9b;font-style: normal;'>地址：</em>" + ka[a].address + "</span><span style='margin-top: -1px;display: block;margin-left: 0px;width:35%;float:left;'><em style='color:#9b9b9b;font-style: normal;'>编号：</em>" + ka[a].id + "</span><span style='margin-top: -1px;display: block;margin-left: 0px;width:65%;float:left;'><em style='color:#9b9b9b;font-style: normal;'>负责区域：</em>"+ ka[a].my_area +"</span><span style='margin-top: -1px;display: block;width:35%;float:left;margin-left: 0px;'><em style='color:#9b9b9b;font-style: normal;'>心率：</em>"+ ka[a].heart + "</span><span style='margin-top: -1px;display: block;width:65%;float:left;margin-left: 0px;'><em style='color:#9b9b9b;font-style: normal;'>步数：</em>"+ ka[a].step, opts );  // 创建信息窗口对象 
+                                                                                        window["iwa"+a] = new BMap.InfoWindow("<img src='" + ka[a].picture + "' style='width:35px;height:35px;border-radius:35px;margin-top:0px; margin-right:10px;'><span style='margin-top: -42px;display: block;margin-left: 45px;'><em style='color:#9b9b9b;font-style: normal;'>姓名：</em>" + ka[a].account + "</span><br/><span style='margin-top: -22px;display: block;margin-left: 45px;'><em style='color:#9b9b9b;font-style: normal;'>电话：</em>"+ ka[a].phone+ "</span><br/><span style='margin-top: -20px;display: block;margin-left: 0px;'><em style='color:#9b9b9b;font-style: normal;'>地址：</em>" + ka[a].address + "</span><span style='margin-top: -1px;display: block;margin-left: 0px;width:35%;float:left;'><em style='color:#9b9b9b;font-style: normal;'>编号：</em>" + ka[a].id + "</span><span style='margin-top: -1px;display: block;margin-left: 0px;width:65%;float:left;'><em style='color:#9b9b9b;font-style: normal;'>负责区域：</em>"+ ka[a].my_area +"</span><span style='margin-top: -1px;display: block;width:35%;float:left;margin-left: 0px;'><em style='color:#9b9b9b;font-style: normal;'>心率：</em>"+ ka[a].heart + "</span><span style='margin-top: -1px;display: block;width:65%;float:left;margin-left: 0px;'><em style='color:#9b9b9b;font-style: normal;'>步数2：</em>"+ ka[a].step+ "</span><span style='margin-top: -1px;display: block;width:65%;float:left;margin-left: 0px;'><em style='color:#9b9b9b;font-style: normal;'>公司：</em>"+ ka[a].company+"</span>", opts );  
                                                         window["mka"+a].addEventListener('click', function() {
                                                                 console.log(a+'点击了预设覆盖物1'+window["pta"+a]);
                                                                 map.openInfoWindow(window["iwa"+a],window["pta"+a])
@@ -265,7 +275,7 @@ import axios from 'axios';
                         //                                 if(ka[a].alarm == 1){ 
                         //                                     var myIcon = new BMap.Icon("http://dooodesign.com/dist/src/images/ryyc.png", new BMap.Size(28,32));
                         //                                 }else{
-                        //                                     var myIcon = new BMap.Icon("http://dooodesign.com/dist/src/images/ryzcSM.png", new BMap.Size(38,38));
+                        //                                     var myIcon = new BMap.Icon("http://dooodesign.com/dist/src/images/ryzcXL.png", new BMap.Size(38,38));
                         //                                 }
                                                     
                         //                                 window["mka"+a] = new BMap.Marker(window["pta"+a],{icon:myIcon});  // 创建标注
@@ -462,7 +472,7 @@ xz_b();
                         
                        var aa =Cookies.get('user_id');
                  console.log("cookies_user_id:",aa);
-                 axios.get('http://xhj.icecn.net/xhjapi/listStaff?company=士明&session_id='+aa).then((res) => {
+                 axios.get('http://xhj.icecn.net/xhjapi/listStaff?company=0&session_id='+aa).then((res) => {
                                 var ka=res.data.list;
                                 zai = 0;
                                 for(let a=0;a<ka.length;a++){
@@ -473,13 +483,23 @@ xz_b();
                                         if(ka[a].alarm == 1){ 
                                             var myIcon = new BMap.Icon("http://dooodesign.com/dist/src/images/ryyc.png", new BMap.Size(28,32));
                                         }else{
-                                            var myIcon = new BMap.Icon("http://dooodesign.com/dist/src/images/ryzcSM.png", new BMap.Size(38,38));
+                                             if(ka[a].company == "士明"){
+                                                var myIcon = new BMap.Icon("http://dooodesign.com/dist/src/images/ryzcSM.png", new BMap.Size(38,38));
+                                            }else if(ka[a].company == "馨靓"){
+                                                var myIcon = new BMap.Icon("http://dooodesign.com/dist/src/images/ryzcXL.png", new BMap.Size(38,38));
+                                            }else if(ka[a].company == "守利"){
+                                                var myIcon = new BMap.Icon("http://dooodesign.com/dist/src/images/ryzcSL.png", new BMap.Size(38,38));
+                                            }else if(ka[a].company == "冉然"){
+                                                var myIcon = new BMap.Icon("http://dooodesign.com/dist/src/images/ryzcRR.png", new BMap.Size(38,38));
+                                            }else{
+                                                var myIcon = new BMap.Icon("http://dooodesign.com/dist/src/images/ryzcYY.png", new BMap.Size(38,38));
+                                            }
                                         }
                                     
                                         window["mka"+a] = new BMap.Marker(window["pta"+a],{icon:myIcon});  // 创建标注
                                         map.addOverlay(window["mka"+a]);              // 将标注添加到地图中
                                         console.log(ka[a].picture)
-                                        window["iwa"+a] = new BMap.InfoWindow("<img src='" + ka[a].picture + "' style='width:35px;height:35px;border-radius:35px;margin-top:0px; margin-right:10px;'><span style='margin-top: -42px;display: block;margin-left: 45px;'><em style='color:#9b9b9b;font-style: normal;'>姓名：</em>" + ka[a].account + "</span><br/><span style='margin-top: -22px;display: block;margin-left: 45px;'><em style='color:#9b9b9b;font-style: normal;'>电话：</em>"+ ka[a].phone+ "</span><br/><span style='margin-top: -20px;display: block;margin-left: 0px;'><em style='color:#9b9b9b;font-style: normal;'>地址：</em>" + ka[a].address + "</span><span style='margin-top: -1px;display: block;margin-left: 0px;width:35%;float:left;'><em style='color:#9b9b9b;font-style: normal;'>编号：</em>" + ka[a].id + "</span><span style='margin-top: -1px;display: block;margin-left: 0px;width:65%;float:left;'><em style='color:#9b9b9b;font-style: normal;'>负责区域：</em>"+ ka[a].my_area +"</span><span style='margin-top: -1px;display: block;width:35%;float:left;margin-left: 0px;'><em style='color:#9b9b9b;font-style: normal;'>心率：</em>"+ ka[a].heart + "</span><span style='margin-top: -1px;display: block;width:65%;float:left;margin-left: 0px;'><em style='color:#9b9b9b;font-style: normal;'>步数：</em>"+ ka[a].step, opts );  // 创建信息窗口对象 
+                                                                        window["iwa"+a] = new BMap.InfoWindow("<img src='" + ka[a].picture + "' style='width:35px;height:35px;border-radius:35px;margin-top:0px; margin-right:10px;'><span style='margin-top: -42px;display: block;margin-left: 45px;'><em style='color:#9b9b9b;font-style: normal;'>姓名：</em>" + ka[a].account + "</span><br/><span style='margin-top: -22px;display: block;margin-left: 45px;'><em style='color:#9b9b9b;font-style: normal;'>电话：</em>"+ ka[a].phone+ "</span><br/><span style='margin-top: -20px;display: block;margin-left: 0px;'><em style='color:#9b9b9b;font-style: normal;'>地址：</em>" + ka[a].address + "</span><span style='margin-top: -1px;display: block;margin-left: 0px;width:35%;float:left;'><em style='color:#9b9b9b;font-style: normal;'>编号：</em>" + ka[a].id + "</span><span style='margin-top: -1px;display: block;margin-left: 0px;width:65%;float:left;'><em style='color:#9b9b9b;font-style: normal;'>负责区域：</em>"+ ka[a].my_area +"</span><span style='margin-top: -1px;display: block;width:35%;float:left;margin-left: 0px;'><em style='color:#9b9b9b;font-style: normal;'>心率：</em>"+ ka[a].heart + "</span><span style='margin-top: -1px;display: block;width:65%;float:left;margin-left: 0px;'><em style='color:#9b9b9b;font-style: normal;'>步数2：</em>"+ ka[a].step+ "</span><span style='margin-top: -1px;display: block;width:65%;float:left;margin-left: 0px;'><em style='color:#9b9b9b;font-style: normal;'>公司：</em>"+ ka[a].company+"</span>", opts );   // 创建信息窗口对象 
                                         window["mka"+a].addEventListener('click', function() {
                                                 console.log(a+'点击了预设覆盖物1'+window["pta"+a]);
                                                 map.openInfoWindow(window["iwa"+a],window["pta"+a])
@@ -620,7 +640,7 @@ xz_b();
                             }
   var aa =Cookies.get('user_id');
                  console.log("cookies_user_id:",aa);
-                 axios.get('http://xhj.icecn.net/xhjapi/listStaff?company=士明&session_id='+aa).then((res) => {
+                 axios.get('http://xhj.icecn.net/xhjapi/listStaff?company=0&session_id='+aa).then((res) => {
                                 var ka=res.data.list;
                                 zai = 0;
                                 for(let a=0;a<ka.length;a++){
@@ -631,13 +651,23 @@ xz_b();
                                         if(ka[a].alarm == 1){ 
                                             var myIcon = new BMap.Icon("http://dooodesign.com/dist/src/images/ryyc.png", new BMap.Size(28,32));
                                         }else{
-                                            var myIcon = new BMap.Icon("http://dooodesign.com/dist/src/images/ryzcSM.png", new BMap.Size(38,38));
+                                            if(ka[a].company == "士明"){
+                                                var myIcon = new BMap.Icon("http://dooodesign.com/dist/src/images/ryzcSM.png", new BMap.Size(38,38));
+                                            }else if(ka[a].company == "馨靓"){
+                                                var myIcon = new BMap.Icon("http://dooodesign.com/dist/src/images/ryzcXL.png", new BMap.Size(38,38));
+                                            }else if(ka[a].company == "守利"){
+                                                var myIcon = new BMap.Icon("http://dooodesign.com/dist/src/images/ryzcSL.png", new BMap.Size(38,38));
+                                            }else if(ka[a].company == "冉然"){
+                                                var myIcon = new BMap.Icon("http://dooodesign.com/dist/src/images/ryzcRR.png", new BMap.Size(38,38));
+                                            }else{
+                                                var myIcon = new BMap.Icon("http://dooodesign.com/dist/src/images/ryzcYY.png", new BMap.Size(38,38));
+                                            }
                                         }
                                     
                                         window["mka"+a] = new BMap.Marker(window["pta"+a],{icon:myIcon});  // 创建标注
                                         map.addOverlay(window["mka"+a]);              // 将标注添加到地图中
                                         console.log(ka[a].picture)
-                                        window["iwa"+a] = new BMap.InfoWindow("<img src='" + ka[a].picture + "' style='width:35px;height:35px;border-radius:35px;margin-top:0px; margin-right:10px;'><span style='margin-top: -42px;display: block;margin-left: 45px;'><em style='color:#9b9b9b;font-style: normal;'>姓名：</em>" + ka[a].account + "</span><br/><span style='margin-top: -22px;display: block;margin-left: 45px;'><em style='color:#9b9b9b;font-style: normal;'>电话：</em>"+ ka[a].phone+ "</span><br/><span style='margin-top: -20px;display: block;margin-left: 0px;'><em style='color:#9b9b9b;font-style: normal;'>地址：</em>" + ka[a].address + "</span><span style='margin-top: -1px;display: block;margin-left: 0px;width:35%;float:left;'><em style='color:#9b9b9b;font-style: normal;'>编号：</em>" + ka[a].id + "</span><span style='margin-top: -1px;display: block;margin-left: 0px;width:65%;float:left;'><em style='color:#9b9b9b;font-style: normal;'>负责区域：</em>"+ ka[a].my_area +"</span><span style='margin-top: -1px;display: block;width:35%;float:left;margin-left: 0px;'><em style='color:#9b9b9b;font-style: normal;'>心率：</em>"+ ka[a].heart + "</span><span style='margin-top: -1px;display: block;width:65%;float:left;margin-left: 0px;'><em style='color:#9b9b9b;font-style: normal;'>步数：</em>"+ ka[a].step, opts );  // 创建信息窗口对象 
+                                                                        window["iwa"+a] = new BMap.InfoWindow("<img src='" + ka[a].picture + "' style='width:35px;height:35px;border-radius:35px;margin-top:0px; margin-right:10px;'><span style='margin-top: -42px;display: block;margin-left: 45px;'><em style='color:#9b9b9b;font-style: normal;'>姓名：</em>" + ka[a].account + "</span><br/><span style='margin-top: -22px;display: block;margin-left: 45px;'><em style='color:#9b9b9b;font-style: normal;'>电话：</em>"+ ka[a].phone+ "</span><br/><span style='margin-top: -20px;display: block;margin-left: 0px;'><em style='color:#9b9b9b;font-style: normal;'>地址：</em>" + ka[a].address + "</span><span style='margin-top: -1px;display: block;margin-left: 0px;width:35%;float:left;'><em style='color:#9b9b9b;font-style: normal;'>编号：</em>" + ka[a].id + "</span><span style='margin-top: -1px;display: block;margin-left: 0px;width:65%;float:left;'><em style='color:#9b9b9b;font-style: normal;'>负责区域：</em>"+ ka[a].my_area +"</span><span style='margin-top: -1px;display: block;width:35%;float:left;margin-left: 0px;'><em style='color:#9b9b9b;font-style: normal;'>心率：</em>"+ ka[a].heart + "</span><span style='margin-top: -1px;display: block;width:65%;float:left;margin-left: 0px;'><em style='color:#9b9b9b;font-style: normal;'>步数2：</em>"+ ka[a].step+ "</span><span style='margin-top: -1px;display: block;width:65%;float:left;margin-left: 0px;'><em style='color:#9b9b9b;font-style: normal;'>公司：</em>"+ ka[a].company+"</span>", opts );   // 创建信息窗口对象 
                                         window["mka"+a].addEventListener('click', function() {
                                                 console.log(a+'点击了预设覆盖物1'+window["pta"+a]);
                                                 map.openInfoWindow(window["iwa"+a],window["pta"+a])
@@ -716,7 +746,7 @@ xz_b();
 
                              var aa =Cookies.get('user_id');
                  console.log("cookies_user_id:",aa);
-                 axios.get('http://xhj.icecn.net/xhjapi/listStaff?company=士明&session_id='+aa).then((res) => {
+                 axios.get('http://xhj.icecn.net/xhjapi/listStaff?company=0&session_id='+aa).then((res) => {
                                 var ka=res.data.list;
                                 zai = 0;
                                 for(let a=0;a<ka.length;a++){
@@ -727,13 +757,23 @@ xz_b();
                                         if(ka[a].alarm == 1){ 
                                             var myIcon = new BMap.Icon("http://dooodesign.com/dist/src/images/ryyc.png", new BMap.Size(28,32));
                                         }else{
-                                            var myIcon = new BMap.Icon("http://dooodesign.com/dist/src/images/ryzcSM.png", new BMap.Size(38,38));
+                                             if(ka[a].company == "士明"){
+                                                var myIcon = new BMap.Icon("http://dooodesign.com/dist/src/images/ryzcSM.png", new BMap.Size(38,38));
+                                            }else if(ka[a].company == "馨靓"){
+                                                var myIcon = new BMap.Icon("http://dooodesign.com/dist/src/images/ryzcXL.png", new BMap.Size(38,38));
+                                            }else if(ka[a].company == "守利"){
+                                                var myIcon = new BMap.Icon("http://dooodesign.com/dist/src/images/ryzcSL.png", new BMap.Size(38,38));
+                                            }else if(ka[a].company == "冉然"){
+                                                var myIcon = new BMap.Icon("http://dooodesign.com/dist/src/images/ryzcRR.png", new BMap.Size(38,38));
+                                            }else{
+                                                var myIcon = new BMap.Icon("http://dooodesign.com/dist/src/images/ryzcYY.png", new BMap.Size(38,38));
+                                            }
                                         }
                                     
                                         window["mka"+a] = new BMap.Marker(window["pta"+a],{icon:myIcon});  // 创建标注
                                         map.addOverlay(window["mka"+a]);              // 将标注添加到地图中
                                         console.log(ka[a].picture)
-                                        window["iwa"+a] = new BMap.InfoWindow("<img src='" + ka[a].picture + "' style='width:35px;height:35px;border-radius:35px;margin-top:0px; margin-right:10px;'><span style='margin-top: -42px;display: block;margin-left: 45px;'><em style='color:#9b9b9b;font-style: normal;'>姓名：</em>" + ka[a].account + "</span><br/><span style='margin-top: -22px;display: block;margin-left: 45px;'><em style='color:#9b9b9b;font-style: normal;'>电话：</em>"+ ka[a].phone+ "</span><br/><span style='margin-top: -20px;display: block;margin-left: 0px;'><em style='color:#9b9b9b;font-style: normal;'>地址：</em>" + ka[a].address + "</span><span style='margin-top: -1px;display: block;margin-left: 0px;width:35%;float:left;'><em style='color:#9b9b9b;font-style: normal;'>编号：</em>" + ka[a].id + "</span><span style='margin-top: -1px;display: block;margin-left: 0px;width:65%;float:left;'><em style='color:#9b9b9b;font-style: normal;'>负责区域：</em>"+ ka[a].my_area +"</span><span style='margin-top: -1px;display: block;width:35%;float:left;margin-left: 0px;'><em style='color:#9b9b9b;font-style: normal;'>心率：</em>"+ ka[a].heart + "</span><span style='margin-top: -1px;display: block;width:65%;float:left;margin-left: 0px;'><em style='color:#9b9b9b;font-style: normal;'>步数：</em>"+ ka[a].step, opts );  // 创建信息窗口对象 
+                                                                        window["iwa"+a] = new BMap.InfoWindow("<img src='" + ka[a].picture + "' style='width:35px;height:35px;border-radius:35px;margin-top:0px; margin-right:10px;'><span style='margin-top: -42px;display: block;margin-left: 45px;'><em style='color:#9b9b9b;font-style: normal;'>姓名：</em>" + ka[a].account + "</span><br/><span style='margin-top: -22px;display: block;margin-left: 45px;'><em style='color:#9b9b9b;font-style: normal;'>电话：</em>"+ ka[a].phone+ "</span><br/><span style='margin-top: -20px;display: block;margin-left: 0px;'><em style='color:#9b9b9b;font-style: normal;'>地址：</em>" + ka[a].address + "</span><span style='margin-top: -1px;display: block;margin-left: 0px;width:35%;float:left;'><em style='color:#9b9b9b;font-style: normal;'>编号：</em>" + ka[a].id + "</span><span style='margin-top: -1px;display: block;margin-left: 0px;width:65%;float:left;'><em style='color:#9b9b9b;font-style: normal;'>负责区域：</em>"+ ka[a].my_area +"</span><span style='margin-top: -1px;display: block;width:35%;float:left;margin-left: 0px;'><em style='color:#9b9b9b;font-style: normal;'>心率：</em>"+ ka[a].heart + "</span><span style='margin-top: -1px;display: block;width:65%;float:left;margin-left: 0px;'><em style='color:#9b9b9b;font-style: normal;'>步数2：</em>"+ ka[a].step+ "</span><span style='margin-top: -1px;display: block;width:65%;float:left;margin-left: 0px;'><em style='color:#9b9b9b;font-style: normal;'>公司：</em>"+ ka[a].company+"</span>", opts );    // 创建信息窗口对象 
                                         window["mka"+a].addEventListener('click', function() {
                                                 console.log(a+'点击了预设覆盖物1'+window["pta"+a]);
                                                 map.openInfoWindow(window["iwa"+a],window["pta"+a])
@@ -890,7 +930,7 @@ xz_b();
 
                var aa =Cookies.get('user_id');
                  console.log("cookies_user_id:",aa);
-                 axios.get('http://xhj.icecn.net/xhjapi/listStaff?company=士明&session_id='+aa).then((res) => {
+                 axios.get('http://xhj.icecn.net/xhjapi/listStaff?company=0&session_id='+aa).then((res) => {
                         var ka=res.data.list;
                         zai = 0;
                         for(let a=0;a<ka.length;a++){
@@ -901,13 +941,23 @@ xz_b();
                                 if(ka[a].alarm == 1){ 
                                     var myIcon = new BMap.Icon("http://dooodesign.com/dist/src/images/ryyc.png", new BMap.Size(28,32));
                                 }else{
-                                    var myIcon = new BMap.Icon("http://dooodesign.com/dist/src/images/ryzcSM.png", new BMap.Size(38,38));
+                                     if(ka[a].company == "士明"){
+                                                var myIcon = new BMap.Icon("http://dooodesign.com/dist/src/images/ryzcSM.png", new BMap.Size(38,38));
+                                            }else if(ka[a].company == "馨靓"){
+                                                var myIcon = new BMap.Icon("http://dooodesign.com/dist/src/images/ryzcXL.png", new BMap.Size(38,38));
+                                            }else if(ka[a].company == "守利"){
+                                                var myIcon = new BMap.Icon("http://dooodesign.com/dist/src/images/ryzcSL.png", new BMap.Size(38,38));
+                                            }else if(ka[a].company == "冉然"){
+                                                var myIcon = new BMap.Icon("http://dooodesign.com/dist/src/images/ryzcRR.png", new BMap.Size(38,38));
+                                            }else{
+                                                var myIcon = new BMap.Icon("http://dooodesign.com/dist/src/images/ryzcYY.png", new BMap.Size(38,38));
+                                            }
                                 }
                                
                                 window["mka"+a] = new BMap.Marker(window["pta"+a],{icon:myIcon});  // 创建标注
                                 map.addOverlay(window["mka"+a]);              // 将标注添加到地图中
                                 console.log(ka[a].picture)
-                                window["iwa"+a] = new BMap.InfoWindow("<img src='" + ka[a].picture + "' style='width:35px;height:35px;border-radius:35px;margin-top:0px; margin-right:10px;'><span style='margin-top: -42px;display: block;margin-left: 45px;'><em style='color:#9b9b9b;font-style: normal;'>姓名：</em>" + ka[a].account + "</span><br/><span style='margin-top: -22px;display: block;margin-left: 45px;'><em style='color:#9b9b9b;font-style: normal;'>电话：</em>"+ ka[a].phone+ "</span><br/><span style='margin-top: -20px;display: block;margin-left: 0px;'><em style='color:#9b9b9b;font-style: normal;'>地址：</em>" + ka[a].address + "</span><span style='margin-top: -1px;display: block;margin-left: 0px;width:35%;float:left;'><em style='color:#9b9b9b;font-style: normal;'>编号：</em>" + ka[a].id + "</span><span style='margin-top: -1px;display: block;margin-left: 0px;width:65%;float:left;'><em style='color:#9b9b9b;font-style: normal;'>负责区域：</em>"+ ka[a].my_area +"</span><span style='margin-top: -1px;display: block;width:35%;float:left;margin-left: 0px;'><em style='color:#9b9b9b;font-style: normal;'>心率：</em>"+ ka[a].heart + "</span><span style='margin-top: -1px;display: block;width:65%;float:left;margin-left: 0px;'><em style='color:#9b9b9b;font-style: normal;'>步数：</em>"+ ka[a].step, opts );  // 创建信息窗口对象 
+                                window["iwa"+a] = new BMap.InfoWindow("<img src='" + ka[a].picture + "' style='width:35px;height:35px;border-radius:35px;margin-top:0px; margin-right:10px;'><span style='margin-top: -42px;display: block;margin-left: 45px;'><em style='color:#9b9b9b;font-style: normal;'>姓名：</em>" + ka[a].account + "</span><br/><span style='margin-top: -22px;display: block;margin-left: 45px;'><em style='color:#9b9b9b;font-style: normal;'>电话：</em>"+ ka[a].phone+ "</span><br/><span style='margin-top: -20px;display: block;margin-left: 0px;'><em style='color:#9b9b9b;font-style: normal;'>地址：</em>" + ka[a].address + "</span><span style='margin-top: -1px;display: block;margin-left: 0px;width:35%;float:left;'><em style='color:#9b9b9b;font-style: normal;'>编号：</em>" + ka[a].id + "</span><span style='margin-top: -1px;display: block;margin-left: 0px;width:65%;float:left;'><em style='color:#9b9b9b;font-style: normal;'>负责区域：</em>"+ ka[a].my_area +"</span><span style='margin-top: -1px;display: block;width:35%;float:left;margin-left: 0px;'><em style='color:#9b9b9b;font-style: normal;'>心率：</em>"+ ka[a].heart + "</span><span style='margin-top: -1px;display: block;width:65%;float:left;margin-left: 0px;'><em style='color:#9b9b9b;font-style: normal;'>步数2：</em>"+ ka[a].step+ "</span><span style='margin-top: -1px;display: block;width:65%;float:left;margin-left: 0px;'><em style='color:#9b9b9b;font-style: normal;'>公司：</em>"+ ka[a].company+"</span>", opts );  // 创建信息窗口对象 
                                 window["mka"+a].addEventListener('click', function() {
                                         console.log(a+'点击了预设覆盖物1'+window["pta"+a]);
                                         map.openInfoWindow(window["iwa"+a],window["pta"+a])

@@ -21,13 +21,38 @@ export const table1Columns = [
         align: 'center',
         key: 'heart',
         editable: true
+    },
+    {
+        title: '公司',
+        align: 'center',
+        key: 'company',
+        editable: true
+    },
+    {
+        title: '上报时间',
+        align: 'center',
+        key: 'report_time',
+        render: (h, params) => {
+            if(params.row.off_minute >=30 && params.row.report_time == undefined){
+                return h('div',{
+                    style: {
+                        color: 'red',
+                    }
+                },  '未知');
+            }else if(params.row.off_minute >=30 && params.row.report_time != "undefined"){
+                return h('div',{
+                    style: {
+                        color: 'red',
+                    }
+                },  params.row.report_time);
+            }
+           else{
+            return h('div',params.row.report_time);
+            }
+        }
+
     }
 ];
-
-
-
-
-   
 
 
 // export const table1Data = [

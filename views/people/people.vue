@@ -2,6 +2,13 @@
     @import '../../styles/common.less';
     @import '../../styles/table.less';
 </style>
+<style>
+.ivu-table .err {
+    background-color: #f60;
+    color: red;
+}
+</style>
+
 
 <template>
     <div>
@@ -82,6 +89,10 @@ export default {
                                 j.account = k[i].account;
                                 j.step = k[i].step;
                                 j.heart = k[i].heart;
+                                j.company = k[i].company;
+                                j.report_time = k[i].report_str;
+                                j.off_minute = k[i].off_minute;
+                                
                                 json.push(j);
                     }
                         u.sort(json,'step');

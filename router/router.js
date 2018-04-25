@@ -95,6 +95,13 @@ export const appRouter = [
         component: Main,
         children: [
             {
+                path: 'map0',
+                icon: 'map',
+                name: 'map0',
+                title: '地图-全部',
+                component: resolve => { require(['@/views/map/map0/map0.vue'], resolve); }
+            },
+            {
                 path: 'map1',
                 icon: 'map',
                 name: 'map1',
