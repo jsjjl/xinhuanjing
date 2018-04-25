@@ -13,11 +13,11 @@
                     <div>
                         <div style="margin:0 0 20px 0; font-size:14px;" class="ditu_top">显示：
                             <CheckboxGroup v-model="fruit" style="display:inline-block;font-size:14px;"  @on-change="checkGroupChange">
-                                <Checkbox label="环卫工"></Checkbox>
-                                <Checkbox label="垃圾桶"></Checkbox>
+                                <Checkbox label="维护人员"></Checkbox>
+                                <Checkbox label="智能井盖"></Checkbox>
                                 <Checkbox label="公共厕所/垃圾压缩站"></Checkbox>
                             </CheckboxGroup>&nbsp;&nbsp;&nbsp;&nbsp;
-                            <span>总共人数：</span><em>{{ zong }}人</em>&nbsp;&nbsp;&nbsp;&nbsp;<span>在线人数：<em>{{ zai }}人</em></span>
+                            <span>报警设备：</span><em>{{ zong }}个</em>&nbsp;&nbsp;&nbsp;&nbsp;<span>已处理：<em>{{ zai }}个</em></span>
                         </div>
 
 
@@ -51,7 +51,7 @@ import axios from 'axios';
         name:'',
         data () {
             return {
-                fruit: ['环卫工','垃圾桶','公共厕所/垃圾压缩站'],
+                fruit: ['维护人员','智能井盖','公共厕所/垃圾压缩站'],
                 zong:""
             }
         },
@@ -226,12 +226,12 @@ import axios from 'axios';
 
                                             })
 
-                }
+                };
                 
                 var aaa= JSON.stringify(val);
                 console.log(aaa);
                 
-                if(val == "环卫工"){
+                if(val == "维护人员"){
                     xz_a();
 
                         // this.$nextTick(function () {
@@ -292,7 +292,7 @@ import axios from 'axios';
 
 
 
-                }else if(val == "垃圾桶"){
+                }else if(val == "智能井盖"){
 xz_b();
                     // this.$nextTick(function () {
                     //                     MP("qCRNVGumLaK3e4wyTi6za5UhX99KhjiO").then( BMap => {
@@ -408,7 +408,7 @@ xz_b();
                         });
                     
                 }
-                else if(val == "环卫工,垃圾桶" || val == "垃圾桶,环卫工"){
+                else if(val == "维护人员,智能井盖" || val == "智能井盖,维护人员"){
                     console.log("1,2");
                      this.$nextTick(function () {
 
@@ -504,7 +504,7 @@ xz_b();
                    
                     
                 }           
-                else if(val == "垃圾桶,公共厕所/垃圾压缩站" || val == "公共厕所/垃圾压缩站,垃圾桶"){
+                else if(val == "智能井盖,公共厕所/垃圾压缩站" || val == "公共厕所/垃圾压缩站,智能井盖"){
                     console.log("2,3");
                      this.$nextTick(function () {
 
@@ -596,7 +596,7 @@ xz_b();
                    
                     
                 }
-                else if(val == "环卫工,公共厕所/垃圾压缩站" || val == "公共厕所/垃圾压缩站,环卫工"){
+                else if(val == "维护人员,公共厕所/垃圾压缩站" || val == "公共厕所/垃圾压缩站,维护人员"){
                     console.log("1,3");
                      this.$nextTick(function () {
 

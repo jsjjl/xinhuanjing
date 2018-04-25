@@ -141,11 +141,11 @@ export const appRouter = [
     {
         path: '/people',
         icon: 'man',
-        title: '环卫工实时数据',
+        title: '维护人员实时数据',
         name: 'people',
         component: Main,
         children: [
-            { path: 'index', title: '环卫工实时数据', name: 'people_index', component: resolve => { require(['@/views/people/people.vue'], resolve); } }
+            { path: 'index', title: '维护人员实时数据', name: 'people_index', component: resolve => { require(['@/views/people/people.vue'], resolve); } }
         ]
     },
     {
@@ -161,7 +161,7 @@ export const appRouter = [
     {
         path: '/work',
         icon: 'clipboard',
-        title: '作业列表',
+        title: '处理工单',
         name: 'work',
         component: Main,
         children: [
@@ -171,11 +171,11 @@ export const appRouter = [
     {
         path: '/tousu',
         icon: 'clipboard',
-        title: '投诉与整改',
+        title: '井盖监控',
         name: 'work',
         component: Main,
         children: [
-            { path: 'index', title: '投诉与整改', name: 'tousu_index', component: resolve => { require(['@/views/tousu/tousu.vue'], resolve); } }
+            { path: 'index', title: '井盖监控', name: 'tousu_index', component: resolve => { require(['@/views/tousu/tousu.vue'], resolve); } }
         ]
     },
     {

@@ -13,11 +13,18 @@
                     <div>
                         <div style="margin:0 0 20px 0; font-size:14px;" class="ditu_top">显示：
                             <CheckboxGroup v-model="fruit" style="display:inline-block;font-size:14px;"  @on-change="checkGroupChange">
+<<<<<<< HEAD
                                 <Checkbox label="环卫工"></Checkbox>
                                 <Checkbox label="垃圾桶"></Checkbox>
                                 <Checkbox label="公共厕所/垃圾压缩站"></Checkbox>
                             </CheckboxGroup>&nbsp;&nbsp;&nbsp;&nbsp;
                             <span>总共人数：</span><em>{{ zong }}人</em>&nbsp;&nbsp;&nbsp;&nbsp;<span>在线人数：<em>{{ zai }}人</em></span>
+=======
+                                <Checkbox label="维护人员"></Checkbox>
+                                <Checkbox label="智能井盖"></Checkbox>
+                            </CheckboxGroup>&nbsp;&nbsp;&nbsp;&nbsp;
+                            <span>报警设备：</span><em>28个</em>&nbsp;&nbsp;&nbsp;&nbsp;<span>已处理：<em>5个</em></span>
+>>>>>>> 8dfe4f7fa9ec29829be4465a73f290515fe10222
                         </div>
 
 
@@ -51,7 +58,11 @@ import axios from 'axios';
         name:'',
         data () {
             return {
+<<<<<<< HEAD
                 fruit: ['环卫工','垃圾桶','公共厕所/垃圾压缩站'],
+=======
+                fruit: ['维护人员','智能井盖'],
+>>>>>>> 8dfe4f7fa9ec29829be4465a73f290515fe10222
                 zong:""
             }
         },
@@ -231,6 +242,7 @@ import axios from 'axios';
                 var aaa= JSON.stringify(val);
                 console.log(aaa);
                 
+<<<<<<< HEAD
                 if(val == "环卫工"){
                     xz_a();
 
@@ -346,6 +358,9 @@ xz_b();
                     //                         })
 
                     //     });
+=======
+                if(val == "维护人员"){
+>>>>>>> 8dfe4f7fa9ec29829be4465a73f290515fe10222
                     
    
                 
@@ -510,6 +525,7 @@ xz_b();
 
                         MP("qCRNVGumLaK3e4wyTi6za5UhX99KhjiO").then( BMap => {
 
+<<<<<<< HEAD
                             // 百度地图API功能
                             var map = new BMap.Map("allmap");
                             var point = new BMap.Point(121.364093, 31.251892);
@@ -586,6 +602,9 @@ xz_b();
                                                         }   
                                                         
                                                     })
+=======
+                }else if(val == "智能井盖"){
+>>>>>>> 8dfe4f7fa9ec29829be4465a73f290515fe10222
 
 
                         })

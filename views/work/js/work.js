@@ -5,7 +5,7 @@ export const table1Columns = [{
         align: 'center'
     },
     {
-        title: '姓名',
+        title: '处理人员姓名',
         align: 'center',
         key: 'account',
         editable: true
@@ -25,12 +25,6 @@ export const table1Columns = [{
         title: '状态',
         align: 'center',
         key: 'deal',
-        editable: true
-    },
-    {
-        title: '分类',
-        align: 'center',
-        key: 'type',
         editable: true
     }
 ];

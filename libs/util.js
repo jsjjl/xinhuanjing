@@ -7,7 +7,7 @@ let util = {
 
 };
 util.title = function (title) {
-    title = title || '新环境管理平台';
+    title = title || '智能井盖管理平台';
     window.document.title = title;
 };
 

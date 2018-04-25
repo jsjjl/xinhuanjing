@@ -47,32 +47,18 @@ export default {
         key: 'dangwei'
     },
     {
-        title: '时限',
+        title: '时间',
         align: 'center',
         key: 'shixian',
         editable: true
     },
     {
-                    title: '详情',
-                    key: 'show_more',
-                    align: 'center',
-                    render: (h, params) => {
-                        return h('Button', {
-                            props: {
-                                type: 'text',
-                                size: 'small'
-                            },
-                            on: {
-                                click: () => {
-                                    let argu = { order_id: params.row.order_id };
-                                    this.$router.push({
-                                        name: 'order-info',
-                                        params: argu
-                                    });
-                                }
-                            }
-                        }, '了解详情');
-                    }
+
+          title: '情况说明',
+        align: 'center',
+        key: 'shixian2',
+        editable: true
+             
                 }
             ],
             orderData: [
@@ -80,8 +66,9 @@ export default {
                     shijian: "2018年3月1日",
       didian: "丰庄路35号",
       laiyuan: "居民",
-      dangwei: "上海士明保洁服务有限公司",
-      shixian: "2018年3月1日 下午15:00"
+      dangwei: "上海士明有限公司",
+      shixian: "2018年3月1日 下午15:06:28",
+      shixian2: "设备被非法开启"
                 }
             ]
         };
